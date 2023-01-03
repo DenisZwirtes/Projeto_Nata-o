@@ -1,4 +1,5 @@
 <?php
+session_start();
 $categorias = [];
 $categorias[] = 'infantil';
 $categorias[] = 'adolescente';
@@ -9,33 +10,40 @@ $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 if (empty($nome)) {
-    echo "O campo não pode ser Vazio!";
+    $_SESSION['mensagem de erro'] = "Nenhum campo não pode estar Vazio, preencha novamente!";
+    header('location: index.php');
     return;
-}
-if (strlen($nome) < 3 || strlen($nome) > 30) {
-    echo "O campo deve conter de 3 a 30 caracteres";
+} else if (strlen($nome) < 3 || strlen($nome) > 30) {
+    $_SESSION['mensagem de erro'] = "O campo deve conter de 3 a 30 caracteres";
+    header('location: index.php');
     return;
-}
-if (!is_numeric($idade)) {
-    echo "Campo deve ser preenchido com Números!";
+} else if (!is_numeric($idade)) {
+    $_SESSION['mensagem de erro'] = "Campo Idade deve ser preenchido com Números!";
+    header('location: index.php');
     return;
 }
 if ($idade >= 6 && $idade <= 12) {
     for ($i = 0; $i <= count($categorias); $i++) {
         if ($categorias[$i] == 'infantil') {
-            echo "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            $_SESSION['mensagem de sucesso'] =  "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            header('location: index.php');
+            return;
         }
     }
 } elseif ($idade >= 13 && $idade <= 18) {
     for ($i = 0; $i <= count($categorias); $i++) {
         if ($categorias[$i] == 'adolescente') {
-            echo "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            $_SESSION['mensagem de sucesso'] = "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            header('location: index.php');
+            return;
         }
     }
 } else {
     for ($i = 0; $i <= count($categorias); $i++) {
         if ($categorias[$i] == 'adulto') {
-            echo "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            $_SESSION['mensagem de sucesso'] = "O nadador " . $nome . " compete na categoria " . $categorias[$i];
+            header('location: index.php');
+            return;
         }
     }
 }
