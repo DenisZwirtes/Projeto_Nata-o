@@ -12,8 +12,12 @@ if (empty($nome)) {
     echo "O campo não pode ser Vazio!";
     return;
 }
-if (strlen($nome) < 3 || strlen($nome) > 40) {
-    echo "O campo deve conter de 3 a 40 caracteres";
+if (strlen($nome) < 3 || strlen($nome) > 30) {
+    echo "O campo deve conter de 3 a 30 caracteres";
+    return;
+}
+if (!is_numeric($idade)) {
+    echo "Campo deve ser preenchido com Números!";
     return;
 }
 if ($idade >= 6 && $idade <= 12) {
