@@ -5,8 +5,9 @@ $categorias[] = 'adolescente';
 $categorias[] = 'adulto';
 
 
-$nome = $_POST['Nome'];
-$idade = $_POST['Idade'];
+$nome = $_POST['nome'];
+$idade = $_POST['idade'];
+
 
 if ($idade >= 6 && $idade <= 12) {
     for ($i = 0; $i <= count($categorias); $i++) {
