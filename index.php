@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "serviços/servicos_mensagem_sessao.php";
 
 ?>
 
@@ -17,11 +17,11 @@ session_start();
     <p>Formulário Para Inscrição de Competidores</p>
     <form action="script.php" method="post">
         <?php
-        $mensagem_de_sucesso = isset($_SESSION['mensagem de sucesso']) ? $_SESSION['mensagem de sucesso'] : '';
+        $mensagem_de_sucesso = obter_mensagem_sucesso();
         if (!empty($mensagem_de_sucesso)) {
             echo $mensagem_de_sucesso;
         };
-        $mensagem_de_erro = isset($_SESSION['mensagem de erro']) ? $_SESSION['mensagem de erro'] : '';
+        $mensagem_de_erro = obter_mensagem_erro();
         if (!empty($mensagem_de_erro)) {
             echo $mensagem_de_erro;
         };
