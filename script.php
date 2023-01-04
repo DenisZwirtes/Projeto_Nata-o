@@ -10,4 +10,4 @@ $idade = $_POST['idade'];
 
 define_categoria_competidor($nome, $idade);
 
-header('location:index.php');
+header("location:index.php");

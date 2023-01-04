@@ -11,6 +11,7 @@ function define_categoria_competidor(string $nome, string $idade): ?string
     $categorias[] = 'adulto';
 
     if (valida_nome($nome) && valida_idade($idade)) {
+        remover_mensagem_erro();
         if ($idade >= 6 && $idade <= 12) {
             for ($i = 0; $i <= count($categorias); $i++) {
                 if ($categorias[$i] == 'infantil') {
@@ -37,6 +38,7 @@ function define_categoria_competidor(string $nome, string $idade): ?string
             }
         }
     } else {
-        obter_mensagem_erro();
+        remover_mensagem_sucesso();
+        return obter_mensagem_erro();
     }
 }
