@@ -9,19 +9,7 @@ $categorias[] = 'adulto';
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
-if (empty($nome)) {
-    $_SESSION['mensagem de erro'] = "Nenhum campo não pode estar Vazio, preencha novamente!";
-    header('location: index.php');
-    return;
-} else if (strlen($nome) < 3 || strlen($nome) > 30) {
-    $_SESSION['mensagem de erro'] = "O campo deve conter de 3 a 30 caracteres";
-    header('location: index.php');
-    return;
-} else if (!is_numeric($idade)) {
-    $_SESSION['mensagem de erro'] = "Campo Idade deve ser preenchido com Números!";
-    header('location: index.php');
-    return;
-}
+
 if ($idade >= 6 && $idade <= 12) {
     for ($i = 0; $i <= count($categorias); $i++) {
         if ($categorias[$i] == 'infantil') {
